@@ -1,7 +1,7 @@
 {
 	"name": "gpio_commons",
-	"keywords": "motor, pushrod, switch, AVR, ESP8266",
-	"description": "SwitchPushrod is lib for motor pushrod with switch.",
+	"keywords": "gpio, commons, AVR, ESP8266",
+	"description": "gpio commons.",
 	"version": "1.0.0",
 	"authors": {
 		"name": "zhongj",

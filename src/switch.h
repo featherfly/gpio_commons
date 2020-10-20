@@ -11,6 +11,7 @@ private:
 public:
     Switch(Pin *_pin);
     Switch(Pin *_pin, bool _closeState);
+    int state(bool state);
     int state();
     bool isClose();
     bool isOpen();
