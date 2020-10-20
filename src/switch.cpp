@@ -8,7 +8,7 @@ Switch::Switch(Pin *_pin, bool _closeState)
 {
     pin = _pin;
     closeState = _closeState;
-    Log.notice(F("switch pin %d, closeState %T," CR), pin, closeState);
+    Log.notice(F("switch pin %d, closeState %T," CR), pin->pin(), closeState);
 };
 int Switch::state()
 {
