@@ -24,16 +24,19 @@ int Pin::read()
     if (_mode == INPUT || _mode == INPUT_PULLUP)
     {
         _state = digitalRead(_pin);
+        Log.trace(F("Pin[%d].read = %d, mode %d" CR), _pin, _state, _mode);
         return _state;
     }
     else
     {
+        Log.trace(F("Pin[%d].read = %d, mode %d" CR), _pin, _state, _mode);
         return _state;
     }
 }
 
 int Pin::write(bool state)
 {
+    Log.trace(F("Pin[%d].write(%d), mode %d" CR), _pin, _state, _mode);
     if (_mode == OUTPUT)
     {
         digitalWrite(_pin, state);
@@ -47,6 +50,10 @@ int Pin::pin()
 };
 bool Pin::state()
 {
+    if (_mode == INPUT || _mode == INPUT_PULLUP)
+    {
+        return read();
+    }    
     return _state;
 };
 int Pin::mode()
