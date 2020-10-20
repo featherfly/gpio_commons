@@ -14,6 +14,10 @@ int Switch::state()
 {
     return pin->state();
 };
+int Switch::state(bool state)
+{
+    return pin->write(state);
+};
 bool Switch::isClose()
 {
     int s = state();
