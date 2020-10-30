@@ -7,15 +7,15 @@ class Switch
 {
 private:
     Pin *pin = &Pin(-1, INPUT);
-    bool closeState = true;
+    bool offState = true;
 public:
     Switch(Pin *_pin);
-    Switch(Pin *_pin, bool _closeState);
+    Switch(Pin *_pin, bool _offState);
     int state(bool state);
     int state();
-    bool isClose();
-    bool isOpen();
-    bool open();
-    bool close();
+    bool turn_on();
+    bool turn_off();
+    bool is_on();
+    bool is_off();
 };
 #endif
