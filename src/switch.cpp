@@ -28,7 +28,10 @@ bool Switch::is_on()
     int s = state();
     return offState ? s == LOW : s == HIGH;
 };
-
+bool Switch::turn(bool state)
+{
+    return pin->write(state);
+};
 bool Switch::turn_on()
 {
     return pin->write(!offState);
