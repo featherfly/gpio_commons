@@ -1,7 +1,5 @@
 #ifndef INPUT_SWITCH_H
 #define INPUT_SWITCH_H
-#include <Arduino.h>
-
 #include "pin.h"
 
 class InputSwitch {

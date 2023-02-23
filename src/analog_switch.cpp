@@ -1,6 +1,5 @@
 #include "analog_switch.h"
 
-#include <Arduino.h>
 #include <ArduinoLog.h>
 #include <debugs.h>
 

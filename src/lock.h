@@ -7,15 +7,11 @@
 class Lock
 {
 private:
-    int _lockPin;
-    int _statePin;
-    bool _writeOffState = false;
-    bool _readOffState = false;
-
+    OutputSwitch *lock;
+    InputSwitch *_state;
 public:
-    Lock(int lockPin, int statePin);
-    Lock(int lockPin, int statePin, bool offState);
-    Lock(int lockPin, bool writeOffState, int statePin, bool readOffState);
+    Lock(OutputSwitch *_lock, InputSwitch *_state);
+
     // void setSwitch(Switch *lockSwitch);
     // void setStatePin(Pin *state);
     void setup(int lockPin, bool writeOffState, int statePin, bool readOffState);

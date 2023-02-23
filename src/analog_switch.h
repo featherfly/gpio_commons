@@ -1,6 +1,5 @@
 #ifndef ANALOG_SWITCH_H
 #define ANALOG_SWITCH_H
-#include <Arduino.h>
 #include "pin.h"
 #include "input_switch.h"
 
