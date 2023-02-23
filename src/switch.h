@@ -2,8 +2,10 @@
 #define SWITCH_H
 #include <Arduino.h>
 #include "pin.h"
+#include "input_switch.h"
+#include "output_switch.h"
 
-class Switch
+class Switch:public InputSwitch,public OutputSwitch
 {
 private:
     #ifdef CLASS_PROPERTY_AUTO_INIT

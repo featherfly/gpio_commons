@@ -1,6 +1,7 @@
-#include "pin.h"
 #include <Arduino.h>
 #include <ArduinoLog.h>
+#include <debugs.h>
+#include "pin.h"
 
 Pin::Pin(int pin, int mode) : Pin(pin, mode, false) {}
 
@@ -16,7 +17,7 @@ Pin::Pin(int pin, int mode, bool state)
     {
         write(_state);
     }
-    Log.notice(F("pin %d, mode %d, state %d," CR), _pin, _mode, _state);
+    D(Log.infoln(F("pin %d, mode %d, state %d"), _pin, _mode, _state));
 }
 
 int Pin::read()
@@ -24,19 +25,19 @@ int Pin::read()
     if (_mode == INPUT || _mode == INPUT_PULLUP)
     {
         _state = digitalRead(_pin);
-        Log.trace(F("Pin[%d].read = %d, mode %d" CR), _pin, _state, _mode);
+        D(Log.traceln(F("Pin[%d].read = %d, mode %d"), _pin, _state, _mode));
         return _state;
     }
     else
     {
-        Log.trace(F("Pin[%d].read = %d, mode %d" CR), _pin, _state, _mode);
+        D(Log.traceln(F("Pin[%d].read = %d, mode %d"), _pin, _state, _mode));
         return _state;
     }
 }
 
 int Pin::write(bool state)
 {
-    Log.trace(F("Pin[%d].write(%d), mode %d" CR), _pin, _state, _mode);
+    D(Log.traceln(F("Pin[%d].write(%d), mode %d"), _pin, _state, _mode));
     if (_mode == OUTPUT)
     {
         digitalWrite(_pin, state);
@@ -50,7 +51,7 @@ int Pin::pin()
 };
 bool Pin::state()
 {
-    if (_mode == INPUT || _mode == INPUT_PULLUP)
+    if (_mode == INPUT || _mode == INPUT_PULLUP || _mode == ANALOG)
     {
         return read();
     }    
