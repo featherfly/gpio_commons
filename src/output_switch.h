@@ -1,7 +1,5 @@
 #ifndef OUTPUT_SWITCH_H
 #define OUTPUT_SWITCH_H
-#include <Arduino.h>
-
 #include "pin.h"
 
 class OutputSwitch {
