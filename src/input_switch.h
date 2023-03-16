@@ -14,8 +14,8 @@ class InputSwitch {
    public:
     InputSwitch(Pin *_pin);
     InputSwitch(Pin *_pin, bool _offState);
-    virtual int state();
-    virtual bool is_on();
-    virtual bool is_off();
+    int state();
+    bool is_on();
+    bool is_off();
 };
 #endif

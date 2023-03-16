@@ -1,20 +1,22 @@
 #ifndef LOCK_H
 #define LOCK_H
 
-#include <switch.h>
-#include <pin.h>
+#include "input_switch.h"
+#include "output_switch.h"
+#include "pin.h"
 
-class Lock
-{
-private:
+class Lock {
+   private:
     OutputSwitch *lock;
     InputSwitch *_state;
-public:
+
+   public:
     Lock(OutputSwitch *_lock, InputSwitch *_state);
 
     // void setSwitch(Switch *lockSwitch);
     // void setStatePin(Pin *state);
-    void setup(int lockPin, bool writeOffState, int statePin, bool readOffState);
+    void setup(int lockPin, bool writeOffState, int statePin,
+               bool readOffState);
 
     bool turn(bool state);
 
