@@ -14,9 +14,9 @@ class OutputSwitch {
    public:
     OutputSwitch(Pin *_pin);
     OutputSwitch(Pin *_pin, bool _offState);
-    virtual int state(bool state);
-    virtual bool turn(bool state);
-    virtual bool turn_on();
-    virtual bool turn_off();
+    int state(bool state);
+    bool turn(bool state);
+    bool turn_on();
+    bool turn_off();
 };
 #endif
