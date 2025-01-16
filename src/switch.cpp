@@ -3,28 +3,12 @@
 #include <ArduinoLog.h>
 #include <debugs.h>
 
-Switch::Switch(Pin *_pin) : Switch(_pin, true){};
+Switch::Switch(Pin *out, Pin *in)
+    : Switch(out, in,  true) {};
 
-Switch::Switch(Pin *_pin, bool _offState) : InputSwitch(_pin, _offState) {
-    pin = _pin;
-    offState = _offState;
-    D(Log.infoln(F("switch pin %d, offState %T"), pin->pin(), offState));
+Switch::Switch(Pin *out, Pin *in,  bool offState)
+    : Switch(out, offState, in, offState) {};
+
+Switch::Switch(Pin *out, bool turnOnState, Pin *in, bool isOnState): InputSwitch(in, isOnState),OutputSwitch(out, turnOnState) {
+    D(Log.infoln(F("Switch out_pin %d, outOffState %T, in_pin %d, isOnState %T"), out->pin(), turnOnState, in->pin(), isOnState));
 };
-bool Switch::turn(bool state) {
-    _state = state;
-    return pin->write(state);
-};
-bool Switch::turn_on() { return turn(!offState); };
-
-bool Switch::turn_off() { return turn(offState); };
-
-int Switch::state(bool state) { return pin->write(state); };
-// int Switch::state() { return pin->state(); };
-// bool Switch::is_off() {
-//     int s = state();
-//     return offState ? s == HIGH : s == LOW;
-// };
-// bool Switch::is_on() {
-//     int s = state();
-//     return offState ? s == LOW : s == HIGH;
-// };

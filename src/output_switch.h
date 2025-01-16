@@ -5,16 +5,15 @@
 class OutputSwitch {
    protected:
 #ifdef CLASS_PROPERTY_AUTO_INIT
-    Pin *pin = &Pin(-1, INPUT);
+    Pin *_out = &Pin(-1, INPUT);
 #else
-    Pin *pin;
+    Pin *_out;
 #endif
-    bool offState = true;
+    bool _turnOnState = true;
 
    public:
-    OutputSwitch(Pin *_pin);
-    OutputSwitch(Pin *_pin, bool _offState);
-    int state(bool state);
+    OutputSwitch(Pin *pin);
+    OutputSwitch(Pin *pin, bool turnOnState);
     bool turn(bool state);
     bool turn_on();
     bool turn_off();

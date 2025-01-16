@@ -1,24 +1,24 @@
+#include "input_switch.h"
+
 #include <ArduinoLog.h>
 #include <debugs.h>
 
-#include "input_switch.h"
+InputSwitch::InputSwitch(Pin *pin) : InputSwitch(pin, true) {}
 
-InputSwitch::InputSwitch(Pin *_pin) : InputSwitch(_pin, true){};
+InputSwitch::InputSwitch(Pin *pin, bool isOnState) {
+    in = pin;
+    _isOnState = isOnState;
+    D(Log.infoln(F("InputSwitch pin %d, isOnState %T"), pin->pin(), _isOnState));
+}
 
-InputSwitch::InputSwitch(Pin *_pin, bool _offState) {
-    pin = _pin;
-    offState = _offState;
-    D(Log.infoln(F("switch pin %d, offState %T"), pin->pin(), offState));
-};
-
-int InputSwitch::state() { return pin->state(); };
+int InputSwitch::state() { return in->state(); }
 
 bool InputSwitch::is_off() {
     int s = state();
-    return offState ? s == HIGH : s == LOW;
-};
+    return _isOnState ? s == LOW : s == HIGH;
+}
 
 bool InputSwitch::is_on() {
     int s = state();
-    return offState ? s == LOW : s == HIGH;
-};
+    return _isOnState ? s == HIGH : s == LOW;
+}

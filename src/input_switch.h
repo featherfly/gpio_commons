@@ -5,15 +5,15 @@
 class InputSwitch {
     protected:
 #ifdef CLASS_PROPERTY_AUTO_INIT
-    Pin *pin = &Pin(-1, INPUT);
+    Pin *in = &Pin(-1, INPUT);
 #else
-    Pin *pin;
+    Pin *in;
 #endif
-    bool offState = true;
+    bool _isOnState = true;
 
    public:
-    InputSwitch(Pin *_pin);
-    InputSwitch(Pin *_pin, bool _offState);
+    InputSwitch(Pin *pin);
+    InputSwitch(Pin *pin, bool isOnState);
     int state();
     bool is_on();
     bool is_off();

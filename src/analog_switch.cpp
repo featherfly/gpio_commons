@@ -5,25 +5,24 @@
 
 #include "pin.h"
 
-AnalogSwitch::AnalogSwitch(Pin *_pin, int _scale)
-    : AnalogSwitch(_pin, true, _scale){
+AnalogSwitch::AnalogSwitch(Pin *pin, int scale)
+    : AnalogSwitch(pin, true, scale) {}
 
-      };
-
-AnalogSwitch::AnalogSwitch(Pin *_pin, bool _offState, int _scale)
-    : InputSwitch(_pin, _offState) {
-    pin = _pin;
-    offState = _offState;
+AnalogSwitch::AnalogSwitch(Pin *pin, bool isOnState, int _scale)
+    : InputSwitch(pin, isOnState) {
     scale = _scale;
-    D(Log.infoln(F("switch pin %d, offState %T, scale %d"), pin->pin(),
-                 offState, scale));
-};
-int AnalogSwitch::state() { return pin->state(); };
+    D(Log.infoln(F("AnalogSwitch pin %d, isOnState %T, scale %d"), in->pin(),
+                 isOnState, scale));
+}
+
+// int AnalogSwitch::state() { return in->state(); };
+
 bool AnalogSwitch::is_off() {
     int s = state();
-    return offState ? s > scale : s < scale;
-};
+    return _isOnState ? s <= scale : s >= scale;
+}
+
 bool AnalogSwitch::is_on() {
     int s = state();
-    return offState ? s <= scale : s >= scale;
-};
+    return _isOnState ? s > scale : s < scale;
+}

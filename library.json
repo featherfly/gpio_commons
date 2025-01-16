@@ -2,7 +2,7 @@
 	"name": "gpio_commons",
 	"keywords": "gpio, commons, AVR, ESP8266",
 	"description": "gpio commons.",
-	"version": "1.0.0",
+	"version": "0.4.0",
 	"authors": {
 		"name": "zhongj",
 		"url": "https://github.com/featherfly",
